@@ -8,14 +8,10 @@ head(fin)
 str(fin_1)
 
 
-
-
-
 # ---- Allowing R to treat some specific values to NA while import or in subsetting:-----
 # Replacing BLanks with NAs.
 fin_blank_Adjusted<-read.csv('P3-Future-500-The-Dataset.csv', na.strings = c(""))
 fin<- fin_blank_Adjusted
-
 
 # ---- [sub()1st occurence , gsub() all occurence] Pattern matching and replacement:-----
 a<- 'asassdsdfgfg'
@@ -55,6 +51,7 @@ complete.cases(fin)
 rows_with_NA <- fin[!complete.cases(fin),]
 
 
+
 # ---- NA distribution plot:----
 missing_values <- fin %>%
 summarise_all(funs(sum(is.na(.))/n()))
@@ -65,6 +62,7 @@ missing_values %>%
 ggplot(aes(x=reorder(feature,-missing_percentage),y=missing_percentage)) +
 geom_bar(stat = 'identity',fill='red') +
 coord_flip()
+
 
 
 
@@ -91,7 +89,7 @@ coord_flip()
  fin[!is.na(fin$Industry),] #opposite
  
  # 3. Filtering by removing Rows:
- fin_2<-fin[!is.na(fin$Industry),] #opposite
+ fin_2<-fin[!is.na(fin$Industry),] 
  
  #fin<-fin_2
  
